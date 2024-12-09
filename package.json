@@ -1,0 +1,20 @@
+{
+  "name": "barbershop-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "compression": "^1.7.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5",
+    "nodemailer": "^6.9.16"
+  }
+}

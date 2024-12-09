@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Admin - Barber Shop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!--CSS here--> 
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/gijgo.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/animated-headline.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-image: url('assets/img/hero/h1_hero.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .h22 {
+          color: rgb(172, 136, 19);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-top: -80px;
+        }
+
+        /* Style du tableau */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.8); /* Fond blanc avec transparence */
+            margin-top: 20px; /* Espace entre le titre et la table */
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: rgba(172, 136, 19, 0.9); /* Légèrement transparent pour l'en-tête */
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(240, 240, 240, 0.7); /* Légère transparence pour les lignes paires */
+        }
+        tr:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.7); /* Légère transparence pour les lignes impaires */
+        }
+        tr:hover {
+            background-color: rgba(172, 136, 19, 0.3); /* Couleur de survol légèrement transparent */
+        }
+
+        /* Style des boutons */
+        button {
+            background-color: rgba(172, 136, 19, 0.9); /* Même couleur que Sign Out */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: rgba(172, 136, 19, 1); /* Légèrement plus foncé au survol */
+        }
+
+        .header-btn {
+            background-color: rgba(172, 136, 19, 0.9); /* Couleur du bouton Sign Out */
+            color: white;
+        }
+
+        .header-btn:hover {
+            background-color: rgba(172, 136, 19, 1); /* Survol du bouton Sign Out */
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparent pt-20">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                    <a href="/" class="btn header-btn">Sign Out</a>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+
+    <main>
+        <!-- Reservation Content Start -->
+        <h1>All reservation</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Date of reservation</th>
+                    <th>Status</th>
+                    <th>Action</th> 
+                </tr>
+            </thead>
+            <tbody id="reservationsTable"></tbody>
+        </table>
+      
+        <script>
+           // Récupérer les rendez-vous depuis l'API /all-reservations
+           fetch('/all-reservations')
+            .then(response => response.json())
+            .then(data => {
+              const tableBody = document.getElementById('reservationsTable');
+              data.forEach(appointment => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                  <td>${appointment.name}</td>
+                  <td>${appointment.phone}</td>
+                  <td>${appointment.email}</td>
+                  <td>${appointment.date_time}</td>
+                  <td>${appointment.status}</td>
+                  <td>
+                    <button onclick="updateStatus(${appointment.id}, 'accepted')">Accept</button>
+                    <button onclick="updateStatus(${appointment.id}, 'denied')">Deny</button>
+                  </td>
+                `;
+                tableBody.appendChild(row);
+              });
+            })
+            .catch(error => {
+              console.error('Erreur in recuperation of appointments :', error);
+            });
+
+            function updateStatus(appointmentId, status) {
+            fetch('/updateStatus', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ appointmentId, status })
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Handle success response
+                location.reload(); // Reload the page to update the status in the table
+            })
+            .catch(error => {
+                console.error('Error updating status:', error);
+            });
+            }
+        </script>
+    </main>
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/animated.headline.js"></script>
+    <script src="assets/js/jquery.magnific-popup.js"></script>
+    <script src="assets/js/gijgo.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/jquery.sticky.js"></script>
+    <script src="assets/js/jquery.barfiller.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/hover-direction-snake.min.js"></script>
+    <script src="assets/js/contact.js"></script>
+    <script src="assets/js/jquery.form.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/mail-script.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
