@@ -7,14 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Imane Lamrini",
   "license": "ISC",
-  "description": "",
+  "description": "A simple website for a barbershop that includes a booking system for appointments",
   "dependencies": {
     "compression": "^1.7.5",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mysql2": "^3.11.5",
     "nodemailer": "^6.9.16"
-  }
+  },
+  "engines": {
+  "node": ">=20.x"
+}
+
 }
