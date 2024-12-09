@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware pour servir les fichiers statiques (CSS, JS, Images)
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
-/*
+
 // Configuration de la base de données
 const db = mysql.createConnection({
   host: 'localhost',
@@ -19,17 +19,7 @@ const db = mysql.createConnection({
   password: '', 
   database: 'barbershop',
   port: 33 
-});*/
-
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,  // Aiven MySQL hostname
-  user: process.env.DB_USER,  // Aiven MySQL username
-  password: process.env.DB_PASSWORD,  // Aiven MySQL password
-  database: process.env.DB_NAME,  // Database name (defaultdb is used by Aiven, but you can change it)
-  port: process.env.DB_PORT || 33  // Aiven MySQL port (default MySQL port is 3306)
 });
-
-
 // Connexion à la base de données
 db.connect((err) => {
   if (err) {
