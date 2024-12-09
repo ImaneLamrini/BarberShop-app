@@ -33,8 +33,8 @@ db.connect((err) => {
 const transporter = nodemailer.createTransport({
   service: 'gmail', // You can use another service if needed
   auth: {
-    user: 'lamriniimane123@gmail.com', // Replace with your email
-    pass: 'bozcrpawiytygugx'  // Replace with your email password (or app-specific password)
+    user: 'lamriniimane123@gmail.com',
+    pass: 'bozcrpawiytygugx'  
   }
 });
 
