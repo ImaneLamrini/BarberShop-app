@@ -41,16 +41,17 @@
    ```bash
    npm install
 4. 🛠️ Set up the database:
+   
 +Use MySQL and import the provided SQL schema.
 
 ## ▶️ Run the Application
 
 1. Start the server:
-```bash
-node app.js
+   ```bash
+   node app.js
 2. Access the app in your browser:
-```bash
-http://localhost:3001/
+   ```bash
+   http://localhost:3001/
 
 
 
