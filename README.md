@@ -39,7 +39,7 @@
    cd BarberShop-app
 3. Install dependencies:
    ```bash
-  npm install
+   npm install
 4. 🛠️ Set up the database:
 +Use MySQL and import the provided SQL schema.
 
@@ -47,7 +47,7 @@
 
 1. Start the server:
 ```bash
-  node app.js
+node app.js
 2. Access the app in your browser:
 ```bash
 http://localhost:3001/
