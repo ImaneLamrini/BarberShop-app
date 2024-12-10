@@ -33,7 +33,7 @@
 ### 📂 Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/barbershop.git
+   git clone https://github.com/ImaneLamrini/BarberShop-app.git
 2. Navigate to the project directory:
    ```bash
   cd BarberShop-app
