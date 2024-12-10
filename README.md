@@ -48,7 +48,7 @@
 
 1. Start the server:
    ```bash
-   node app.js
+   node server.js
 2. Access the app in your browser:
    ```bash
    http://localhost:3001/
