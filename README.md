@@ -36,7 +36,7 @@
    git clone https://github.com/ImaneLamrini/BarberShop-app.git
 2. Navigate to the project directory:
    ```bash
-  cd BarberShop-app
+   cd BarberShop-app
 3. Install dependencies:
    ```bash
   npm install
