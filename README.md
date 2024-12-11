@@ -24,8 +24,8 @@
 
 ## 🎥 Video Demo
 📺 **Watch the app in action**:  
-[![Barbershop App Demo](https://img.youtube.com/vi/your-video-id/0.jpg)](https://www.youtube.com/watch?v=your-video-id)  
-> *Click the video link to view the demo.*
+https://drive.google.com/file/d/18ldDimLkTqrVFs9tNXkD0r0jLkPaLfM8/view?usp=sharing
+> *Click the video link in google drive  to view the demo.*
 ---
 
 ## 🚀 Getting Started
